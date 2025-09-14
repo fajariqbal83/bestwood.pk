@@ -1,0 +1,32 @@
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto, Arial;
+}
+
+
+
+.alert-dark {
+    background-color: black;
+}
+
+.btn-success {
+    background-color: orange;
+}
+
+.logo-1 {
+    width: 180px;
+    height: auto;
+}
+
+.cart-icon {
+    width: 30px;
+    object-fit: cover;
+    margin: 5px;
+}
+
