@@ -6,66 +6,76 @@
 }
 
 body {
-    font-family: Roboto, Arial;
+  font-family: Roboto, Arial;
+ 
 }
 
-
-
 .alert-dark {
-    background-color: black;
+  background-color: black;
 }
 
 .btn-success {
-    background-color: orange;
+  background-color: orange;
 }
 
 .logo-1 {
-    width: 180px;
-    height: auto;
+  width: 180px;
+  height: auto;
 }
 
 .cart-icon {
-    width: 30px;
-    object-fit: cover;
-    margin: 5px;
+  width: 30px;
+  object-fit: cover;
+  margin: 5px;
 }
 
-.four-columns, .review-container {
-    margin: 60px;
-   } 
+.cart-icon:hover {
+ filter: brightness(0) saturate(100%) invert(46%) sepia(93%) saturate(2063%) hue-rotate(1deg) brightness(103%) contrast(105%);
+
+}
+
+.review-container {
+  color: #000; 
+  background-color: #f3f2f2;
+}
+.four-columns,
+.review-container {
+  margin: 60px;
+}
 
 .card-img-top {
-    height:225px; object-fit:cover; object-position:center;
+  height: 225px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .bi-star-fill {
-    color: gold;
+  color: gold;
 }
 
 .rounded-circle {
-    object-position: center;
-    object-fit: cover;
+  object-position: center;
+  object-fit: cover;
 }
 
+.sign-bg {
+  background-color: #fffff3;
 
-
+}
 
 /* Responsive Design */
 /* Mobile Screen */
 
 @media only screen and (max-width: 767px) {
-   .carousel-caption {
+  .carousel-caption {
     display: none;
-   }
+  }
 
-   .four-columns {
+  .four-columns {
     margin: 15px;
-   }
+  }
 }
 
-
-
 /* Tablet Screen */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {}
-
-
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
