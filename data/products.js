@@ -11,7 +11,7 @@ export function getProduct(productId) {
 
 
 export const products = [
-  {
+{
   id: 'id1',
   image:'images/products/bed-1.jpg',
   name: 'Classic Wood Bed',
@@ -22,7 +22,7 @@ export const products = [
 },  {
   id: 'id2',
   image:'images/products/bed-2.jpg',
-  name: 'Stylish and comfortable Bed',
+  name: 'Stylish comfy Bed',
   rating: 4.0,
   price: 126000,
   off: 50,
