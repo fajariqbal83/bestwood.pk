@@ -1,16 +1,22 @@
-import { cart, removeFromCart, saveToStorage,  calculateCartQuantity} from "../data/cart.js";
+import {
+  cart,
+  removeFromCart,
+  saveToStorage,
+  calculateCartQuantity,
+} from "../data/cart.js";
 import { getProduct } from "../data/products.js";
+
 
 function renderCart() {
   let cartSummaryHTML = "";
-   let total = 0;
+  let total = 0;
+
 
   cart.forEach((cartItem) => {
-    const matchingProduct = getProduct(cartItem.productId);
 
-    const subtotal = matchingProduct.price * cartItem.quantity;
-
-    total += subtotal;
+  const matchingProduct = getProduct(cartItem.productId);
+  const subtotal = matchingProduct.price * cartItem.quantity;
+  total += subtotal;
 
     cartSummaryHTML += `
     <tr>
@@ -39,7 +45,6 @@ function renderCart() {
 
   document.querySelector(".js-product-cart").innerHTML = cartSummaryHTML;
 
-
   // Delete button
   document.querySelectorAll(".js-delete-link").forEach((link) => {
     link.addEventListener("click", () => {
@@ -49,29 +54,25 @@ function renderCart() {
     });
   });
 
- // Quantity change
-document.querySelectorAll('.js-cart-quantity').forEach((input) =>
-{
-  input.addEventListener('change', (event) => {
+  // Quantity change
+  document.querySelectorAll(".js-cart-quantity").forEach((input) => {
+    input.addEventListener("change", (event) => {
+      const newQuantity = Number(event.target.value);
 
-    const newQuantity = Number(event.target.value);
+      const productId = event.target.dataset.productId;
 
-    const productId = event.target.dataset.productId;
-
-     const cartItem = cart.find(item => item.productId === productId);
-    if (cartItem) {
-      cartItem.quantity = newQuantity;
-      saveToStorage() ;
-    }
-    renderCart();
-   
+      const cartItem = cart.find((item) => item.productId === productId);
+      if (cartItem) {
+        cartItem.quantity = newQuantity;
+        saveToStorage();
+      }
+      renderCart();
+    });
   });
 
-});
+  //Total Summary
 
-//Total Summary
-
-const totalSummmaryHTML = `
+  const totalSummmaryHTML = `
  <tr class="visible-xs">
         <td class="text-center"><strong>Total Rs ${total}</strong></td>
       </tr>
@@ -79,11 +80,11 @@ const totalSummmaryHTML = `
         <td><a href="bestwood.html" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
         <td colspan="2" class="hidden-xs"></td>
         <td class="hidden-xs text-center"><strong>Total Rs ${total}</strong></td>
-        <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+        <td><a href="checkout.html" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
       </tr>
 `;
   document.querySelector(".js-total-price").innerHTML = totalSummmaryHTML;
-
 }
+
 
 renderCart();
