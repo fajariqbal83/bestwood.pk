@@ -5,7 +5,6 @@ loadFromStorage();
 export function loadFromStorage() {
   const storedCart = JSON.parse(localStorage.getItem('cart'));
   cart = storedCart || [];
- 
 }
 
 export function saveToStorage() {

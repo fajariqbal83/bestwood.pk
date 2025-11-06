@@ -19,6 +19,16 @@ const taxPrice = totalBeforeTax * 0.05;
 
 const ordersTotal = Math.round(totalBeforeTax + taxPrice);
 
+const applyDiscount = document.querySelector('.js-discount-button');
+
+applyDiscount.addEventListener('click', () => {
+
+ //console.log( ordersTotal / 0.05);
+
+
+});
+
+
 
 let yourOrderSummary = `
             <tr>
@@ -40,13 +50,26 @@ let yourOrderSummary = `
               <td>Tax (5%)</td>
               <td>Rs ${taxPrice}</td>
             </tr>
-             <tr>
-              <td class="total-price">TOTAL</td>
+            <tr>
+              <td class="total-price">Total before discount</td>
               <td>Rs ${ordersTotal}</td>
             </tr>
+              <tr>
+              <td class="total-price"> Discount(5%) </td>
+             <td> <button class="js-discount-button" type="button"> Apply Now </button> </td>
+            </tr>
+             <tr>
+              <td class="total-price">TOTAL</td>
+              <td>Rs  </td>
+            </tr>
+            
 `;
 
+
+
 document.querySelector(".js-your-orders").innerHTML = yourOrderSummary;
+
+
 
 let formSummary = `
           <label>

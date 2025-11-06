@@ -5,6 +5,8 @@ import { getProduct } from "../data/products.js";
 
 const orderinfo = JSON.parse(localStorage.getItem('orderinfo'));
 
+
+
 if (orderinfo) {
   document.querySelector('.js-firstName').textContent = orderinfo.firstName;
   document.querySelector('.js-addressHouse').textContent = orderinfo.address;
@@ -46,3 +48,5 @@ document.querySelector('.js-order-details').innerHTML = `
     ${orderDetailsSummary}
   </tbody>
 `;
+
+localStorage.removeItem('cart');
