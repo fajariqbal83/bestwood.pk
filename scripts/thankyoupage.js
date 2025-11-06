@@ -1,3 +1,8 @@
+import {
+  cart
+} from "../data/cart.js";
+import { getProduct } from "../data/products.js";
+
 const orderinfo = JSON.parse(localStorage.getItem('orderinfo'));
 
 if (orderinfo) {
@@ -8,19 +13,24 @@ if (orderinfo) {
   document.querySelector('.js-selectedPaymentMethod').textContent = orderinfo.paymentMethod;
 }
 
+let orderDetailsSummary = "";
 
-let orderDetailsSummary = `
-      <thead class="head-details">
+cart.forEach((cartItem) => {
+
+   const matchingProduct = getProduct(cartItem.productId);
+
+  
+orderDetailsSummary += `
         <tr>
-          <th>PRODUCT</th>
-          <th>TOTAL</th>
+          <td><a href="#" class="product-name">${matchingProduct.name}</a></td>
+          <td>x ${cartItem.quantity}</td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="#" class="product-name">Tyche Tshirt × 1</a></td>
-          <td>₹45</td>
-        </tr>
+        
+`;
+
+});
+
+orderDetailsSummary += `
         <tr>
           <td class="label-cell">Payment method:</td>
           <td>${orderinfo.paymentMethod}</td>
@@ -29,7 +39,10 @@ let orderDetailsSummary = `
           <td class="label-cell">Total:</td>
           <td>${orderinfo.total}</td>
         </tr>
-      </tbody>
 `;
 
-document.querySelector('.js-order-details').innerHTML = orderDetailsSummary;
+document.querySelector('.js-order-details').innerHTML = `
+  <tbody class="order-detail-table">
+    ${orderDetailsSummary}
+  </tbody>
+`;

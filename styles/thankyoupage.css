@@ -117,6 +117,10 @@ body {
   border-right: 1px solid #ddd;
 }
 
+.order-detail-table {
+  border-top: 1px solid #ddd;
+}
+
 @media (max-width: 600px) {
   .order-container {
     padding: 20px;
