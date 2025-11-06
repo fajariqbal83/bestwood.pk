@@ -126,3 +126,8 @@ button:hover {
   cursor: pointer;
   background: #428a7d;
 }
+
+.place-order {
+  text-decoration: none;
+  color: white;
+}

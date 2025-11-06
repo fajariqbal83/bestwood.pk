@@ -12,14 +12,13 @@
         <h2>Product Order Form</h2>
       </div>
       <div class="d-flex">
-        <form class = "js-form-checkout" action="" method=""></form>
+    <form class = "js-form-checkout" action="" method=""></form>
         <div class="Yorder">
           <table class="js-your-orders">
-            
           </table>
           <br />
           <div>
-            <input type="radio" name="dbt" value="dbt" checked />
+            <input class="js-payment-method" type="radio" name="dbt" value="Direct Bank Transfer" checked />
             Direct Bank Transfer
           </div>
           <p>
@@ -28,18 +27,18 @@
             until the funds have cleared in our account.
           </p>
           <div>
-            <input type="radio" name="dbt" value="cd" />
+            <input class="js-payment-method" type="radio" name="dbt" value="Cash on Delivery" />
             Cash on Delivery
           </div>
           <div>
-            <input type="radio" name="dbt" value="cd" /> Paypal
+            <input class="js-payment-method" type="radio" name="dbt" value="Paypal" /> Paypal
           </div>
-          <button class = "js-place-order" type="button"><a href="thankyoupage.html">Place Order</a></button>
+          <button class = "js-place-order" type="button">Place Order</button>
         </div>
         <!-- Yorder -->
       </div>
     </div>
 
-    <script src="scripts/chechout.js" type="module"></script>
+    <script src="scripts/checkout.js" type="module"></script>
   </body>
 </html>

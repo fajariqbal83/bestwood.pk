@@ -10,6 +10,7 @@ import { getProduct } from "../data/products.js";
 function renderCart() {
   let cartSummaryHTML = "";
   let total = 0;
+  
 
 
   cart.forEach((cartItem) => {

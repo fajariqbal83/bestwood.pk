@@ -1,14 +1,15 @@
 import { cart } from "../data/cart.js";
 import { getProduct } from "../data/products.js";
 
-let checkoutSubtotal = 0;
+
 let shippingPrice = 1000;
+let checkoutSubtotal = 0;
+let items = 0;
 
-
-cart.forEach((cartItem) => {
+  cart.forEach((cartItem) => {
   const matchingProduct = getProduct(cartItem.productId);
-
   const subtotal = matchingProduct.price * cartItem.quantity;
+   items += cartItem.quantity;
   checkoutSubtotal += subtotal;
 });
 
@@ -16,14 +17,15 @@ const totalBeforeTax = checkoutSubtotal + shippingPrice;
 
 const taxPrice = totalBeforeTax * 0.05;
 
-const ordersTotal = totalBeforeTax + taxPrice;
+const ordersTotal = Math.round(totalBeforeTax + taxPrice);
+
 
 let yourOrderSummary = `
             <tr>
               <th colspan="2">Your order</th>
             </tr>
             <tr>
-              <td>Items<span>(0)</span></td>
+              <td>Items<span>(${items})</span></td>
               <td>Rs ${checkoutSubtotal}</td>
             </tr>
             <tr>
@@ -44,7 +46,7 @@ let yourOrderSummary = `
             </tr>
 `;
 
-document.querySelector('.js-your-orders').innerHTML = yourOrderSummary;
+document.querySelector(".js-your-orders").innerHTML = yourOrderSummary;
 
 let formSummary = `
           <label>
@@ -52,25 +54,25 @@ let formSummary = `
               >First Name
               <span class="required">*</span>
             </span>
-            <input type="text" name="fname" />
+            <input type="text" name="fname" class = "js-first-name"/>
           </label>
           <label>
             <span class="lname"
               >Last Name
               <span class="required">*</span>
             </span>
-            <input type="text" name="lname" />
+            <input type="text" name="lname" class = "js-last-name" />
           </label>
           <label>
             <span>Company Name (Optional)</span>
-            <input type="text" name="cn" />
+            <input type="text" name="cn" class = "js-company-name" />
           </label>
           <label>
             <span
               >Country
               <span class="required">*</span>
             </span>
-            <select name="selection">
+            <select name="selection" class = "js-select-country">
               <option value="select">Select a country...</option>
               <option value="AFG">Afghanistan</option>
               <option value="ALA">Åland Islands</option>
@@ -339,6 +341,7 @@ let formSummary = `
             <input
               type="text"
               name="houseadd"
+              class = "js-house-address"
               placeholder="House number and street name"
               required
             />
@@ -346,6 +349,7 @@ let formSummary = `
           <label>
             <span>&nbsp;</span>
             <input
+            class = "js-apartment"
               type="text"
               name="apartment"
               placeholder="Apartment, suite, unit etc. (optional)"
@@ -356,35 +360,35 @@ let formSummary = `
               >Town / City
               <span class="required">*</span>
             </span>
-            <input type="text" name="city" />
+            <input type="text" name="city" class = "js-city-town" />
           </label>
           <label>
             <span
-              >State / County
+              >State / Country
               <span class="required">*</span>
             </span>
-            <input type="text" name="city" />
+            <input type="text" name="city" class = "js-state-country" />
           </label>
           <label>
             <span
               >Postcode / ZIP
               <span class="required">*</span>
             </span>
-            <input type="text" name="city" />
+            <input type="text" name="city" class = "js-postcode" />
           </label>
           <label>
             <span
               >Phone
               <span class="required">*</span>
             </span>
-            <input type="tel" name="city" />
+            <input type="tel" name="city" class = "js-phone" />
           </label>
           <label>
             <span
               >Email Address
               <span class="required">*</span>
             </span>
-            <input type="email" name="city" />
+            <input type="email" name="city" class = "js-email" />
           </label>
           <a href="shoppingCart.html">
             <svg
@@ -403,12 +407,33 @@ let formSummary = `
           </a>
 `;
 
-document.querySelector('.js-form-checkout').innerHTML = formSummary;
+document.querySelector(".js-form-checkout").innerHTML = formSummary;
+
+const placeOrderButton = document.querySelector(".js-place-order");
+
+placeOrderButton.addEventListener("click", (event) => {
+
+  const orderinfo = {
+    firstName: document.querySelector(".js-first-name").value,
+    lastName: document.querySelector(".js-last-name").value,
+    companyName: document.querySelector(".js-company-name").value,
+    selectCountry: document.querySelector(".js-select-country").value,
+    address: document.querySelector(".js-house-address").value,
+    apartmentNumber: document.querySelector(".js-apartment").value,
+    city: document.querySelector(".js-city-town").value,
+    country: document.querySelector(".js-state-country").value,
+    postcode: document.querySelector(".js-postcode").value,
+    phone: document.querySelector(".js-phone").value,
+    email: document.querySelector(".js-email").value,
+    paymentMethod: document.querySelector(
+    ".js-payment-method:checked"
+  ).value,
+    total: ordersTotal
+  };
 
 
-const placeOrderButton = document.querySelector('.js-place-order');
 
-placeOrderButton.addEventListener('click', () => {
-  console.log('place order');
+  localStorage.setItem('orderinfo', JSON.stringify(orderinfo));
 
+  window.location.href = 'thankyoupage.html';
 });

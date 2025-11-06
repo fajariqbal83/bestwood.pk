@@ -13,54 +13,30 @@
 
     <div class="order-summary">
       <div class="summary-item">
-        <span class="label">FIRST NAME:</span>
-        <span class="value">..</span>
+        <span class="label">NAME:</span>
+        <span class="value js-firstName"></span>
       </div>
        <div class="summary-item">
         <span class="label">ADDRESS:</span>
-        <span class="value">...</span>
+        <span class="value js-addressHouse"></span>
       </div>
       <div class="summary-item">
         <span class="label">PHONE:</span>
-        <span class="value">...</span>
+        <span class="value js-phoneNumber"></span>
       </div>
       <div class="summary-item">
         <span class="label">TOTAL:</span>
-        <span class="value">₹450.00</span>
+        <span class="value js-thankyou-total"></span>
       </div>
       <div class="summary-item">
         <span class="label">PAYMENT METHOD:</span>
-        <span class="value bold">..</span>
+        <span class="value bold js-selectedPaymentMethod"></span>
       </div>
     </div>
 
     <h2 class="details-title">Order details</h2>
 
-    <table class="order-table">
-      <thead class="head-details">
-        <tr>
-          <th>PRODUCT</th>
-          <th>TOTAL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="#" class="product-name">Tyche Tshirt × 1</a></td>
-          <td>₹450.00</td>
-        </tr>
-        <tr>
-          <td class="label-cell">Subtotal:</td>
-          <td>₹450.00</td>
-        </tr>
-        <tr>
-          <td class="label-cell">Payment method:</td>
-          <td>Direct bank transfer</td>
-        </tr>
-        <tr class="total-row">
-          <td class="label-cell">Total:</td>
-          <td>₹450.00</td>
-        </tr>
-      </tbody>
+    <table class="order-table js-order-details">
     </table>
      <a href="checkout.html">
             <svg
@@ -78,6 +54,8 @@
             </svg>
           </a>
   </div>
+
+  <script type = "module" src="scripts/thankyoupage.js" ></script>
   
 </body>
 </html>
