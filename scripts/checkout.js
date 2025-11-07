@@ -5,7 +5,9 @@ import { getProduct } from "../data/products.js";
 let shippingPrice = 1000;
 let checkoutSubtotal = 0;
 let items = 0;
-let discountValue = 0;
+let finalTotal = 0;
+
+
 
 
   cart.forEach((cartItem) => {
@@ -50,12 +52,12 @@ let yourOrderSummary = `
               <td>Rs ${ordersTotal}</td>
             </tr>
               <tr>
-              <td class="total-price"> Discount(5%) </td>
-             <td> <button class="js-discount-button" type="button"> Apply Now </button> </td>
+              <td> <input class="discount-code-input js-code-input" type="text" placeholder="Discount code"> </td>
+             <td> <button class="js-discount-button" type="button"> Apply</button> </td>
             </tr>
              <tr>
               <td class="total-price">TOTAL</td>
-              <td class="js-discount-price">Rs ${discountValue}  </td>
+              <td class="js-discount-price">Rs ${finalTotal}  </td>
             </tr>
             
 `;
@@ -64,20 +66,34 @@ let yourOrderSummary = `
 
 document.querySelector(".js-your-orders").innerHTML = yourOrderSummary;
 
+const discountCodes = {
+
+  "SAVE10" : 10,
+  "SAVE20" : 20,
+  "SAVE50" : 50
+
+};
+
+
+
 const applyDiscount = document.querySelector('.js-discount-button');
-
-
 applyDiscount.addEventListener('click', () => {
 
-  discountValue = ordersTotal - (ordersTotal / 5);
+  const codeinput = document.querySelector('.js-code-input').value.trim().toUpperCase();
 
-  document.querySelector('.js-discount-price').innerHTML = discountValue;
+  if (discountCodes[codeinput]) {
+    const discountPercent = discountCodes[codeinput];
+    const discountAmount = (ordersTotal * discountPercent) / 100;
+    finalTotal = ordersTotal - discountAmount;
 
+    document.querySelector('.js-discount-price').innerHTML = `Rs ${finalTotal}`;
 
+    localStorage.setItem('discountedTotal', finalTotal);
 
-
+  } else {
+  alert("Invalid discount code");
+}
 });
-
 
 
 let formSummary = `
@@ -445,6 +461,9 @@ const placeOrderButton = document.querySelector(".js-place-order");
 
 placeOrderButton.addEventListener("click", (event) => {
 
+const storedFinalTotal = localStorage.getItem('discountedTotal');
+
+
   const orderinfo = {
     firstName: document.querySelector(".js-first-name").value,
     lastName: document.querySelector(".js-last-name").value,
@@ -460,10 +479,9 @@ placeOrderButton.addEventListener("click", (event) => {
     paymentMethod: document.querySelector(
     ".js-payment-method:checked"
   ).value,
-    total: ordersTotal
+    total: ordersTotal,
+    totalAfterDiscount: finalTotal
   };
-
-
 
   localStorage.setItem('orderinfo', JSON.stringify(orderinfo));
 

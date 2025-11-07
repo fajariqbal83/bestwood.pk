@@ -12,6 +12,7 @@ if (orderinfo) {
   document.querySelector('.js-addressHouse').textContent = orderinfo.address;
   document.querySelector('.js-phoneNumber').textContent = orderinfo.phone;
   document.querySelector('.js-thankyou-total').textContent = orderinfo.total;
+  document.querySelector('.js-discount-total').textContent = orderinfo.totalAfterDiscount;
   document.querySelector('.js-selectedPaymentMethod').textContent = orderinfo.paymentMethod;
 }
 
@@ -38,8 +39,12 @@ orderDetailsSummary += `
           <td>${orderinfo.paymentMethod}</td>
         </tr>
         <tr class="total-row">
-          <td class="label-cell">Total:</td>
+          <td class="label-cell">Total before discount:</td>
           <td>${orderinfo.total}</td>
+        </tr>
+         <tr class="total-row">
+          <td class="label-cell">Total after discount:</td>
+          <td>${orderinfo.totalAfterDiscount}</td>
         </tr>
 `;
 
