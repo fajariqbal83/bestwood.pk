@@ -1,19 +1,15 @@
 import { cart } from "../data/cart.js";
 import { getProduct } from "../data/products.js";
 
-
 let shippingPrice = 1000;
 let checkoutSubtotal = 0;
 let items = 0;
 let finalTotal = 0;
 
-
-
-
-  cart.forEach((cartItem) => {
+cart.forEach((cartItem) => {
   const matchingProduct = getProduct(cartItem.productId);
   const subtotal = matchingProduct.price * cartItem.quantity;
-   items += cartItem.quantity;
+  items += cartItem.quantity;
   checkoutSubtotal += subtotal;
 });
 
@@ -22,10 +18,6 @@ const totalBeforeTax = checkoutSubtotal + shippingPrice;
 const taxPrice = totalBeforeTax * 0.05;
 
 const ordersTotal = Math.round(totalBeforeTax + taxPrice);
-
-
-
-
 
 let yourOrderSummary = `
             <tr>
@@ -62,39 +54,33 @@ let yourOrderSummary = `
             
 `;
 
-
-
 document.querySelector(".js-your-orders").innerHTML = yourOrderSummary;
 
 const discountCodes = {
-
-  "SAVE10" : 10,
-  "SAVE20" : 20,
-  "SAVE50" : 50
-
+  SAVE10: 10,
+  SAVE20: 20,
+  SAVE50: 50,
 };
 
-
-
-const applyDiscount = document.querySelector('.js-discount-button');
-applyDiscount.addEventListener('click', () => {
-
-  const codeinput = document.querySelector('.js-code-input').value.trim().toUpperCase();
+const applyDiscount = document.querySelector(".js-discount-button");
+applyDiscount.addEventListener("click", () => {
+  const codeinput = document
+    .querySelector(".js-code-input")
+    .value.trim()
+    .toUpperCase();
 
   if (discountCodes[codeinput]) {
     const discountPercent = discountCodes[codeinput];
     const discountAmount = (ordersTotal * discountPercent) / 100;
     finalTotal = ordersTotal - discountAmount;
 
-    document.querySelector('.js-discount-price').innerHTML = `Rs ${finalTotal}`;
+    document.querySelector(".js-discount-price").innerHTML = `Rs ${finalTotal}`;
 
-    localStorage.setItem('discountedTotal', finalTotal);
-
+    localStorage.setItem("discountedTotal", finalTotal);
   } else {
-  alert("Invalid discount code");
-}
+    alert("Invalid discount code");
+  }
 });
-
 
 let formSummary = `
           <label>
@@ -460,9 +446,7 @@ document.querySelector(".js-form-checkout").innerHTML = formSummary;
 const placeOrderButton = document.querySelector(".js-place-order");
 
 placeOrderButton.addEventListener("click", (event) => {
-
-const storedFinalTotal = localStorage.getItem('discountedTotal');
-
+  const storedFinalTotal = localStorage.getItem("discountedTotal");
 
   const orderinfo = {
     firstName: document.querySelector(".js-first-name").value,
@@ -476,19 +460,12 @@ const storedFinalTotal = localStorage.getItem('discountedTotal');
     postcode: document.querySelector(".js-postcode").value,
     phone: document.querySelector(".js-phone").value,
     email: document.querySelector(".js-email").value,
-    paymentMethod: document.querySelector(
-    ".js-payment-method:checked"
-  ).value,
+    paymentMethod: document.querySelector(".js-payment-method:checked").value,
     total: ordersTotal,
-    totalAfterDiscount: finalTotal
+    totalAfterDiscount: finalTotal,
   };
 
-  localStorage.setItem('orderinfo', JSON.stringify(orderinfo));
+  localStorage.setItem("orderinfo", JSON.stringify(orderinfo));
 
-  window.location.href = 'thankyoupage.html';
+  window.location.href = "thankyoupage.html";
 });
-
-
-
-
-

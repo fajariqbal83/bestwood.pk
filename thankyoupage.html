@@ -1,65 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Order Received</title>
-  <link rel="stylesheet" href="styles/thankyoupage.css" />
-</head>
-<body>
-  <div class="order-container">
-    <h1 class="order-title">Order received</h1>
-    <p class="order-subtitle">Thank you. Your order has been received.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Received</title>
+    <link rel="stylesheet" href="styles/thankyoupage.css" />
+  </head>
+  <body>
+    <div class="order-container">
+      <h1 class="order-title">Order received</h1>
+      <p class="order-subtitle">Thank you. Your order has been received.</p>
 
-    <div class="order-summary">
-      <div class="summary-item">
-        <span class="label">NAME</span>
-        <span class="value js-firstName"></span>
+      <div class="order-summary">
+        <div class="summary-item">
+          <span class="label">NAME</span>
+          <span class="value js-firstName"></span>
+        </div>
+        <div class="summary-item">
+          <span class="label">ADDRESS</span>
+          <span class="value js-addressHouse"></span>
+        </div>
+        <div class="summary-item">
+          <span class="label">PHONE</span>
+          <span class="value js-phoneNumber"></span>
+        </div>
+        <div class="summary-item">
+          <span class="label">TOTAL BEFORE DISCOUNT</span>
+          <span class="value js-thankyou-total"></span>
+        </div>
+        <div class="summary-item">
+          <span class="label">TOTAL AFTER DISCOUNT</span>
+          <span class="value js-discount-total"></span>
+        </div>
+        <div class="summary-item">
+          <span class="label">PAYMENT METHOD</span>
+          <span class="value bold js-selectedPaymentMethod"></span>
+        </div>
       </div>
-       <div class="summary-item">
-        <span class="label">ADDRESS</span>
-        <span class="value js-addressHouse"></span>
-      </div>
-      <div class="summary-item">
-        <span class="label">PHONE</span>
-        <span class="value js-phoneNumber"></span>
-      </div>
-      <div class="summary-item">
-        <span class="label">TOTAL BEFORE DISCOUNT</span>
-        <span class="value js-thankyou-total"></span>
-      </div>
-       <div class="summary-item">
-        <span class="label">TOTAL AFTER DISCOUNT</span>
-        <span class="value js-discount-total"></span>
-      </div>
-      <div class="summary-item">
-        <span class="label">PAYMENT METHOD</span>
-        <span class="value bold js-selectedPaymentMethod"></span>
-      </div>
+
+      <h2 class="details-title">Order details</h2>
+
+      <table class="order-table js-order-details"></table>
+      <a href="checkout.html">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="23"
+          fill="currentColor"
+          class="bi bi-arrow-left-square"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+          />
+        </svg>
+      </a>
     </div>
 
-    <h2 class="details-title">Order details</h2>
-
-    <table class="order-table js-order-details">
-    </table>
-     <a href="checkout.html">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="23"
-              height="23"
-              fill="currentColor"
-              class="bi bi-arrow-left-square"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
-              />
-            </svg>
-          </a>
-  </div>
-
-  <script type = "module" src="scripts/thankyoupage.js" ></script>
-  
-</body>
+    <script type="module" src="scripts/thankyoupage.js"></script>
+  </body>
 </html>

@@ -6,18 +6,14 @@ import {
 } from "../data/cart.js";
 import { getProduct } from "../data/products.js";
 
-
 function renderCart() {
   let cartSummaryHTML = "";
   let total = 0;
-  
-
 
   cart.forEach((cartItem) => {
-
-  const matchingProduct = getProduct(cartItem.productId);
-  const subtotal = matchingProduct.price * cartItem.quantity;
-  total += subtotal;
+    const matchingProduct = getProduct(cartItem.productId);
+    const subtotal = matchingProduct.price * cartItem.quantity;
+    total += subtotal;
 
     cartSummaryHTML += `
     <tr>
@@ -86,6 +82,5 @@ function renderCart() {
 `;
   document.querySelector(".js-total-price").innerHTML = totalSummmaryHTML;
 }
-
 
 renderCart();
