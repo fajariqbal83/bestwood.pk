@@ -5,6 +5,8 @@ import { getProduct } from "../data/products.js";
 let shippingPrice = 1000;
 let checkoutSubtotal = 0;
 let items = 0;
+let discountValue = 0;
+
 
   cart.forEach((cartItem) => {
   const matchingProduct = getProduct(cartItem.productId);
@@ -19,14 +21,7 @@ const taxPrice = totalBeforeTax * 0.05;
 
 const ordersTotal = Math.round(totalBeforeTax + taxPrice);
 
-const applyDiscount = document.querySelector('.js-discount-button');
 
-applyDiscount.addEventListener('click', () => {
-
- //console.log( ordersTotal / 0.05);
-
-
-});
 
 
 
@@ -60,7 +55,7 @@ let yourOrderSummary = `
             </tr>
              <tr>
               <td class="total-price">TOTAL</td>
-              <td>Rs  </td>
+              <td class="js-discount-price">Rs ${discountValue}  </td>
             </tr>
             
 `;
@@ -68,6 +63,20 @@ let yourOrderSummary = `
 
 
 document.querySelector(".js-your-orders").innerHTML = yourOrderSummary;
+
+const applyDiscount = document.querySelector('.js-discount-button');
+
+
+applyDiscount.addEventListener('click', () => {
+
+  discountValue = ordersTotal - (ordersTotal / 5);
+
+  document.querySelector('.js-discount-price').innerHTML = discountValue;
+
+
+
+
+});
 
 
 
@@ -460,3 +469,8 @@ placeOrderButton.addEventListener("click", (event) => {
 
   window.location.href = 'thankyoupage.html';
 });
+
+
+
+
+
